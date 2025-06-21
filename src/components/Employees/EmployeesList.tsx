@@ -129,8 +129,23 @@ const EmployeesList: React.FC<EmployeeListProps> = ({
     setSortOrder(direction);
   };
 
+  const searchTerms = search.toLowerCase().split(" ").filter(Boolean);
   const filteredEmployees = employees
-    .filter((e) => e.fullName.toLowerCase().includes(search.toLowerCase()))
+    // .filter((e) => e.fullName.toLowerCase().includes(search.toLowerCase()))
+    .filter((e) => {
+      const employeeFullName = e.fullName.toLowerCase();
+      const employeeUsername = e.username.toLowerCase();
+      const employeeEmail = e.email.toLowerCase();
+
+      const matchesSearch = searchTerms.every(
+        (term) =>
+          employeeUsername.includes(term) ||
+          employeeFullName.includes(term) ||
+          employeeEmail.includes(term)
+      );
+
+      return matchesSearch;
+    })
     .sort((a, b) => {
       const valueA = a[sortField as keyof Employee];
       const valueB = b[sortField as keyof Employee];

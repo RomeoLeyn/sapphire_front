@@ -126,11 +126,17 @@ export const SupplierList: React.FC<SupplierListProps> = ({
   const filteredSuppliers = suppliers
     .filter((s) => {
       const supplierName = s.name.toLowerCase();
-
+      const supplierContactperson = s.contactPerson.toLowerCase();
+      const supplierAddress = s.address.toLowerCase();
+      const supplierEmail = s.email.toLowerCase();
+      const materialNames = s.materials.map((m) => m.name.toLowerCase());
       const matchesSearch = searchTerms.every(
         (term) =>
-          // supplierNames.some((supplierName) => supplierName.includes(term)) ||
-          supplierName.includes(term)
+          materialNames.some((materialName) => materialName.includes(term)) ||
+          supplierName.includes(term) ||
+          supplierAddress.includes(term) ||
+          supplierEmail.includes(term) ||
+          supplierContactperson.includes(term)
       );
 
       return matchesSearch;

@@ -224,8 +224,8 @@ const UsageLogList: React.FC<UsageLogListProps> = ({
         </div>
       )}
 
-      <div>
-        <table className="min-w-full divide-y divide-gray-300">
+      <div className="overflow-x-auto max-w-full">
+        <table className="w-full divide-y divide-gray-300">
           <thead className="bg-gray-50">
             <tr>
               <th
@@ -291,7 +291,7 @@ const UsageLogList: React.FC<UsageLogListProps> = ({
                     {new Date(usage.usageDate).toLocaleDateString()}
                   </td>
                   <td
-                    className="p-4 text-sm text-gray-500 max-w-xs truncate"
+                    className="p-4 text-sm text-gray-500 truncate"
                     title={usage.comment}
                   >
                     {usage.comment}
