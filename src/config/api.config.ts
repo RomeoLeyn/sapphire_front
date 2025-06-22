@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { ApiConfig } from '../types';
-
 const defaultConfig: ApiConfig = {
   baseURL: import.meta.env.VITE_API_URL || 'https://spring-boot-production-3654.up.railway.app/api/v1',
   timeout: 10000,

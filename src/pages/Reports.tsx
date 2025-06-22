@@ -46,7 +46,7 @@ const Reports: React.FC = () => {
           `"${usage.employee.fullName}"`,
           usage.amountUsed,
           new Date(usage.usageDate).toLocaleDateString(),
-          `"${usage.comment.replace(/"/g, '""')}"`,
+          `"${(usage.comment ?? "").replace(/"/g, '""')}"`,
         ].join(";")
       ),
     ].join("\n");
